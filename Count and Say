@@ -1,0 +1,38 @@
+class Solution {
+public String countAndSay(int n) {
+String s = "1";
+for (int i = 0; i < n-1; i++) {
+s = generate(s);
+}
+return s;
+
+}
+  private static String generate(String s) {
+    StringBuilder res = new StringBuilder();
+    int counter = 1;
+    char curr;
+    char next;
+    char[] chs = s.toCharArray();
+    for (int i = 0; i < s.length(); i++) {
+        curr = chs[i];
+        if (i + 1 < s.length()) {
+            next = chs[i + 1];
+        } else {
+            return res.append(counter).append(curr).toString();
+        }
+        if (curr == next) {
+            counter++;
+        } else {
+            res.append(counter).append(curr);
+            counter =1;
+        }
+    }
+    return res.toString();
+}
+}
+
+/*This method generates the pattern
+1
+11
+21
+1211*/
