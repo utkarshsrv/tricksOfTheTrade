@@ -1,0 +1,13 @@
+public ListNode reverseList(ListNode head) {
+        return rec(head, null);
+    }
+    
+    public ListNode rec(ListNode head, ListNode prev){
+        if(head == null)
+            return prev;
+        ListNode temp=head.next;
+        head.next = prev;
+        prev = head;
+        prev = rec(temp, prev);
+        return prev;
+    }
